@@ -3,6 +3,16 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "devEngines": {
+    "runtime": {
+      "name": "bun",
+      "version": "^1.4.2"
+    },
+    "packageManager": {
+      "name": "bun",
+      "version": "^1.4.2"
+    }
+  },
   "scripts": {
     "download-puzzle": "bun scripts/github/auto-download-puzzle.ts"
   },

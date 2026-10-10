@@ -4,12 +4,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "download-puzzle": "tsx scripts/github/auto-download-puzzle.ts"
+    "download-puzzle": "bun scripts/github/auto-download-puzzle.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.0",
-    "@types/bun": "latest",
-    "tsx": "^4.23.15"
+    "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^7"

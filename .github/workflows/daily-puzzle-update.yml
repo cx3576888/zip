@@ -1,0 +1,36 @@
+name: Daily Puzzle Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 9 * * *"
+
+jobs:
+  main-job:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.x"
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: bunx playwright install --with-deps chromium
+
+      - name: Run playwright script
+        run: bun run download-puzzle
+
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "daily puzzle update"
